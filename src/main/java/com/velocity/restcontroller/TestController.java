@@ -1,24 +1,33 @@
-package com.velocity.model;
+package com.velocity.restcontroller;
 
-import java.util.List;
+import com.velocity.model.ServiceResponse;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 
-public class ServiceResponse {
-    private String status;
-    private String message;
-    private String timestamp;
-    private List<String> features;
+@RestController
+public class TestController {
 
-    // Constructor
-    public ServiceResponse(String status, String message, String timestamp, List<String> features) {
-        this.status = status;
-        this.message = message;
-        this.timestamp = timestamp;
-        this.features = features;
+    /**
+     * Enhanced Service Page returning detailed JSON metadata
+     */
+    @GetMapping("/get-my-service")
+    public ServiceResponse getMyService() {
+        return new ServiceResponse(
+            "UP",
+            "This is an executable Spring Boot Jar running in Kubernetes",
+            LocalDateTime.now().toString(),
+            Arrays.asList("REST API", "JSON Payload", "Health Monitoring", "Containerized")
+        );
     }
 
-    // Getters and Setters
-    public String getStatus() { return status; }
-    public String getMessage() { return message; }
-    public String getTimestamp() { return timestamp; }
-    public List<String> getFeatures() { return features; }
+    /**
+     * Added Feature: Simple Health Check
+     * Useful for Kubernetes Liveness/Readiness probes
+     */
+    @GetMapping("/health")
+    public String checkHealth() {
+        return "Service is healthy and responding from pod: " + System.getenv("HOSTNAME");
+    }
 }
