@@ -11,8 +11,8 @@ public class TestController {
 	 * screen
 	 */
 
-	@GetMapping("/getServices")
-	public String getServices() {
+	@GetMapping("/getMyServices")
+	public String getMyServices() {
 		return "This is Service Page";
 	}
 }
