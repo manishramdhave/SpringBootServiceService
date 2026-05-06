@@ -12,6 +12,6 @@ spec:
 
 
   selector:
-    service: srvc
+    service: service
 
   type: NodePort
