@@ -1,18 +1,24 @@
-package com.velocity.restcontroller;
+package com.velocity.model;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
-@RestController
-public class TestController {
+public class ServiceResponse {
+    private String status;
+    private String message;
+    private String timestamp;
+    private List<String> features;
 
-	/*
-	 * Design restful web service to return "This is executable jar" message on
-	 * screen
-	 */
+    // Constructor
+    public ServiceResponse(String status, String message, String timestamp, List<String> features) {
+        this.status = status;
+        this.message = message;
+        this.timestamp = timestamp;
+        this.features = features;
+    }
 
-	@GetMapping("/getMyService")
-	public String getMyService() {
-		return "This is Service Page";
-	}
+    // Getters and Setters
+    public String getStatus() { return status; }
+    public String getMessage() { return message; }
+    public String getTimestamp() { return timestamp; }
+    public List<String> getFeatures() { return features; }
 }
