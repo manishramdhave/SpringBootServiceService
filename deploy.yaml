@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: v1
-          image: manishramdhave/service:1.0
+          image: manishramdhave/service:1.1
           ports:
             - containerPort: 8080
