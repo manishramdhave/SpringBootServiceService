@@ -1,22 +1,22 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata: 
-  name: deployment-myservice
+  name: deployment-svc
 
 spec:
   replicas: 2
   selector:
     matchLabels:
-      service: myservice
+      service: svc
 
   template:
     metadata:
       labels:
-        service: myservice
+        service: svc
 
     spec:
       containers:
         - name: v1
-          image: manishramdhave/myservice:1.0
+          image: manishramdhave/svc:1.1
           ports:
             - containerPort: 8080
