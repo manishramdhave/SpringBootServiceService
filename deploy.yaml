@@ -7,16 +7,16 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      service: service
+      service: svc
 
   template:
     metadata:
       labels:
-        service: service
+        service: svc
 
     spec:
       containers:
         - name: v1
-          image: manishramdhave/service:1.1
+          image: manishramdhave/svc:1.1
           ports:
             - containerPort: 8080
